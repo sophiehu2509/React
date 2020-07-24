@@ -5,7 +5,8 @@ export default class todolist extends Component {
     constructor(props){
         super(props)
         this.state = {
-            list:[]
+            list:[],
+            item:''
         }
         this.nameRef = React.createRef();
         
@@ -15,11 +16,13 @@ export default class todolist extends Component {
     }
     
     handleClick = (event) => {
-       console.log(this.state.list)
+        this.setState({
+            list:[...this.state.list, this.state.item]
+        })
     }
     handleChange = (event) => {
         this.setState({
-            list:[...this.state.list, event.target.value]
+            item:event.target.value
         })
     }
     render() {
@@ -29,9 +32,12 @@ export default class todolist extends Component {
                 <button className ="btn" onClick={this.handleClick}>Add</button>
                 <ul>
                     {
-                    this.state.list.map((item) => {
-                        <li>{item}</li>
-                    })
+                       
+                            this.state.list.map((item) => {
+                                return <li key={item}>{item}</li>
+                             })
+                        
+                  
                     }
                     
                 </ul>

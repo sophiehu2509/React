@@ -1,3 +1,6 @@
+*{
+    list-style: none;
+}
 .wrapper{
     position: relative;
 }
